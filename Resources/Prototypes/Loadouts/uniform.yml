@@ -259,3 +259,11 @@
   exclusive: true
   items:
     - ClothingUniformColorRainbow
+
+- type: loadout
+  id: LoadoutBKTurtleSkirt
+  category: Uniform
+  cost: 2
+  exclusive: true
+  items:
+    - BKTurtleSkirt
