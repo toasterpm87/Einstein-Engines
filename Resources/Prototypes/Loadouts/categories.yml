@@ -16,3 +16,6 @@
 
 - type: loadoutCategory
   id: Uniform
+
+- type: loadoutCategory 
+  id: Weapons

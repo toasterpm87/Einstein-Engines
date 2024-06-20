@@ -1,0 +1,54 @@
+#- type: loadout
+  #id:
+  #category: Weapons
+  #cost: 5 minimum
+  #exclusive: true
+  #items:
+  #  -
+- type: loadout #need whitelist
+  id: WeaponPistolCobra
+  category: Weapons
+  cost: 5
+  exclusive: true
+  items:
+    - WeaponPistolCobra
+#another note, all weapons must be items that can be stuck in, recreational, or non-conventional
+- type: loadout
+  id: LoadoutWeaponRevolverMateba
+  category: Weapons
+  cost: 7
+  exclusive: true
+  items:
+    - WeaponRevolverMateba
+
+- type: loadout
+  id: LoadoutKitchenKnife
+  category: Weapons
+  cost: 5
+  exclusive: true
+  items:
+    - KitchenKnife
+
+- type: loadout
+  id: LoadoutWhiteCane
+  category: Weapons
+  cost: 1
+  exclusive: true
+  items:
+    - WhiteCane
+
+- type: loadout
+  id: LoadoutEnergyKatana
+  category: Weapons
+  cost: 10
+  exclusive: true
+  items:
+    - EnergyKatana
+
+- type: loadout
+  id: LoadoutKatana
+  category: Weapons
+  cost: 10
+  exclusive: true
+  items:
+    - Katana

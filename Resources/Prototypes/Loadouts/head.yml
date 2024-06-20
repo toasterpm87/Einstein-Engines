@@ -123,3 +123,10 @@
   cost: 1
   items:
     - ClothingHeadHatYellowsoftFlipped
+
+- type: loadout
+  id: LoadoutBKKitsuneMask
+  category: Accessories
+  cost: 2
+  items:
+    - BKKitsuneMask

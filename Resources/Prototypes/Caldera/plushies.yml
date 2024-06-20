@@ -1,0 +1,89 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieBlackburna
+  name: Blackburn Plushie
+  description: A stuffed toy that resembles a typical non-altered blackburna.
+  components:
+    - type: Sprite
+      sprite: Caldera/Objects/Fun/toys.rsi
+      state: plushie_Bkv1
+    - type: EmitSoundOnUse
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnLand
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnActivate
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnTrigger
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: Food
+      requiresSpecialDigestion: true
+      useSound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: MeleeWeapon
+      wideAnimationRotation: 180
+      soundHit:
+        path: Audio/Animals/fox_squeak.ogg
+
+- type: entity
+  parent: BasePlushie
+  id: PlushiePlyushkina
+  name: Plyushkina Plushie
+  description: A stuffed toy that resembles a sub-species of blackburn created for trench clearing and cannon fodder.
+  components:
+    - type: Sprite
+      sprite: Caldera/Objects/Fun/toys.rsi
+      state: plushie_Bkv2
+    - type: EmitSoundOnUse
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnLand
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnActivate
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnTrigger
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: Food
+      requiresSpecialDigestion: true
+      useSound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: MeleeWeapon
+      wideAnimationRotation: 180
+      soundHit:
+        path: Audio/Animals/fox_squeak.ogg
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieMatryoshka
+  name: Matryoshka Plushie
+  description: ...
+  components:
+    - type: Sprite
+      sprite: Caldera/Objects/Fun/toys.rsi
+      state: plushie_Bkv3
+    - type: EmitSoundOnUse
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnLand
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnActivate
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: EmitSoundOnTrigger
+      sound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: Food
+      requiresSpecialDigestion: true
+      useSound:
+        path: Audio/Animals/fox_squeak.ogg
+    - type: MeleeWeapon
+      wideAnimationRotation: 180
+      soundHit:
+        path: Audio/Animals/fox_squeak.ogg
