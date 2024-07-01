@@ -117,6 +117,14 @@
   components:
   - type: ZombieRule
 
+# Nuclear-14 wave defense
+- type: entity
+  id: Waves
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: WaveDefenseRule
+
 # event schedulers
 - type: entity
   id: BasicStationEventScheduler
