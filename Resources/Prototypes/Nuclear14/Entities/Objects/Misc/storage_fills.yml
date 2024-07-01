@@ -1,0 +1,12 @@
+﻿- type: entity
+  abstract: true
+  id: N14BaseTimedStorageFill
+  components:
+  - type: TimedStorageFill
+    contents:
+    - id: Pen
+      prob: 0.03
+    - id: PaperOffice
+      prob: 0.04
+      amount: 1
+      maxAmount: 3
