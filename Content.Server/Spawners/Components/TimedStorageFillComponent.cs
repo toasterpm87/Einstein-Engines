@@ -3,7 +3,7 @@
 namespace Content.Server.Spawners.Components
 {
     [RegisterComponent]
-    public sealed class TimedStorageFillComponent : Component
+    public sealed partial class TimedStorageFillComponent : Component
     {
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField("contents")]

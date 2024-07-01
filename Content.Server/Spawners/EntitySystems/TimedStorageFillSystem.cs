@@ -1,11 +1,12 @@
-﻿using Content.Server.Storage.Components;
+﻿using Content.Server.Spawners.Components;
+using Content.Server.Storage.EntitySystems;
+using Content.Server.Storage.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Random;
-using Content.Server.Spawners.Components;
 
-namespace Content.Server.Storage.EntitySystems;
+namespace Content.Server.Spawners.EntitySystems;
 
-public sealed partial class TimedStorageFillSystem : EntitySystem
+public sealed class TimedStorageFillSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
@@ -14,10 +15,11 @@ public sealed partial class TimedStorageFillSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<TimedStorageFillComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<TimedStorageFillComponent, MapInitEvent>(OnStartup);
+        SubscribeLocalEvent<TimedStorageFillComponent, AnchorStateChangedEvent>(OnUnanchor);
     }
 
-    private void OnStartup(EntityUid uid, TimedStorageFillComponent component, ComponentStartup args)
+    private void OnStartup(EntityUid uid, TimedStorageFillComponent component, MapInitEvent _)
     {
         FillStorage(uid, component);
         component.NextRefillTime = _robustRandom.NextFloat(component.MinimumSeconds, component.MaximumSeconds);
@@ -41,18 +43,22 @@ public sealed partial class TimedStorageFillSystem : EntitySystem
 
     private void FillStorage(EntityUid uid, TimedStorageFillComponent component)
     {
-        if (component.Contents.Count == 0) return;
+        if (component.Contents.Count == 0)
+            return;
 
-        TryComp<ServerStorageComponent>(uid, out var serverStorageComp);
+        TryComp<StorageComponent>(uid, out var serverStorageComp);
         TryComp<EntityStorageComponent>(uid, out var entityStorageComp);
 
         if (entityStorageComp == null && serverStorageComp == null)
         {
-            Logger.Error($"StorageFillComponent couldn't find any StorageComponent ({uid})");
             return;
         }
 
-        if (serverStorageComp?.Storage?.ContainedEntities.Count > 0 || entityStorageComp?.Contents.ContainedEntities.Count > 0)
+        // Optional: opened storages don't spawn stuff infinitely
+        // if (entityStorageComp != null && entityStorageComp.Open)
+        //     return;
+
+        if (serverStorageComp?.Container?.ContainedEntities.Count > 0 || entityStorageComp?.Contents.ContainedEntities.Count > 0)
             return;
 
         var coordinates = Transform(uid).Coordinates;
@@ -63,14 +69,22 @@ public sealed partial class TimedStorageFillSystem : EntitySystem
             var ent = EntityManager.SpawnEntity(item, coordinates);
 
             // handle depending on storage component, again this should be unified after ECS
-            if (entityStorageComp != null && _entityStorage.Insert(ent, uid))
+            if (entityStorageComp != null && _entityStorage.Insert(ent, uid, entityStorageComp))
                continue;
 
-            if (serverStorageComp != null && _storageSystem.Insert(uid, ent, serverStorageComp, false))
+            if (serverStorageComp != null && _storageSystem.Insert(uid, ent, out _))
                 continue;
 
             Logger.ErrorS("storage", $"Tried to StorageFill {item} inside {ToPrettyString(uid)} but can't.");
             EntityManager.DeleteEntity(ent);
+        }
+    }
+
+    private void OnUnanchor(EntityUid uid, TimedStorageFillComponent component, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored)
+        {
+            RemCompDeferred<TimedStorageFillComponent>(uid);
         }
     }
 }
