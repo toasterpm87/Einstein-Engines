@@ -165,3 +165,11 @@
     - Pirates
     - BasicStationEventScheduler
     - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Waves
+  name: Station Wave Defense
+  description: Defend the station from waves of increasingly difficult attackers.
+  showInVote: true
+  rules:
+  - Waves

@@ -1,0 +1,33 @@
+- type: entity
+  name: Beelzebub
+  parent: [ SimpleSpaceMobBase, MobCombat ] #N14MobBaseHostileMob
+  id: InfantryTankBoss
+  description: A tiger 1 in space, what the fuck.
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: tank
+      sprite: Caldera/Tank.rsi
+  - type: BallisticAmmoProvider
+    proto: CartridgeRocketSlow
+    capacity: 50
+  - type: Gun
+    fireRate: 0.2
+    selectedMode: FullAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0.5
+    baseSprintSpeed: 0.8
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      10000: Dead
+  - type: Insulated
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile

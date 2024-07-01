@@ -24,7 +24,7 @@
     whitelist:
       tags:
       - ShellShotgun
-    capacity: 6
+    capacity: 8
     proto: ShellShotgun
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
@@ -41,5 +41,5 @@
   - type: Clothing
     sprite: DeltaV/Objects/Weapons/Guns/Shotguns/pump.rsi # Delta-V
   - type: BallisticAmmoProvider
-    capacity: 4
+    capacity: 8
     proto: ShellShotgunBeanbag

@@ -1,0 +1,11 @@
+- type: entity
+  id: InfantryTankDecor
+  parent: BaseStructure
+  name: Infantry Tank
+  description: Beaten up and run down; one day these machines wll run once more, one day...
+  components:
+  - type: Sprite
+    sprite: Caldera/Tank.rsi
+    state: tank
+    drawdepth: Mobs
+    offset: "0.0,0.5"
